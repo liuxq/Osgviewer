@@ -1,0 +1,17 @@
+hip Y -180 180 Z -90 90 X -180 180
+chest Y -40 40 Z -30 30 X -40 20
+head Y -50 50 Z -30 30 X -90 40
+lCollar X -10 10 Z -30 30 Y -30 10
+lShldr X -60 30 Y -130 80 Z -105 105
+lForeArm X -20 20 Z -5 5 Y -146 13
+lHand X -60 30 Y -20 20 Z -80 80
+rCollar X -10 10 Z -30 30 Y -10 30
+rShldr X -60 30 Y -80 130 Z -105 105
+rForeArm X -20 20 Z -5 5 Y -13 147
+rHand X -60 30 Y -20 20 Z -80 80
+lThigh Y -30 50 Z -27 60 X -160 80
+lShin Y -20 20 Z -5 5 X -20 155
+lFoot Z -30 30 Y -30 30 X -50 100
+rThigh Y -50 30 Z -60 27 X -160 80
+rShin Y -20 20 Z -5 5 X -20 155
+rFoot Z -30 30 Y -30 30 X -50 100

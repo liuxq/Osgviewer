@@ -1,0 +1,622 @@
+// Created by Microsoft (R) C/C++ Compiler Version 12.00.8141.0 (c18f9d03).
+//
+// c3dserver.tli
+//
+// Wrapper implementations for Win32 type library c3dserver.dll
+// compiler-generated file created 08/01/02 at 06:53:26 - DO NOT EDIT!
+
+#pragma once
+
+//
+// interface IC3D wrapper method implementations
+//
+
+inline int IC3D::Open ( _bstr_t sFilename, int nMode ) {
+    int _result;
+    HRESULT _hr = raw_Open(sFilename, nMode, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline HRESULT IC3D::Close ( ) {
+    HRESULT _hr = raw_Close();
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _hr;
+}
+
+inline int IC3D::GetNumber3DPoints ( ) {
+    int _result;
+    HRESULT _hr = raw_GetNumber3DPoints(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline int IC3D::GetAnalogChannels ( ) {
+    int _result;
+    HRESULT _hr = raw_GetAnalogChannels(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline int IC3D::GetVideoFrame ( int nStartEnd ) {
+    int _result;
+    HRESULT _hr = raw_GetVideoFrame(nStartEnd, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline int IC3D::GetMaxInterpolationGap ( ) {
+    int _result;
+    HRESULT _hr = raw_GetMaxInterpolationGap(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline float IC3D::GetHeaderScaleFactor ( ) {
+    float _result;
+    HRESULT _hr = raw_GetHeaderScaleFactor(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline int IC3D::GetStartingRecord ( ) {
+    int _result;
+    HRESULT _hr = raw_GetStartingRecord(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline int IC3D::GetAnalogVideoRatio ( ) {
+    int _result;
+    HRESULT _hr = raw_GetAnalogVideoRatio(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline float IC3D::GetVideoFrameRate ( ) {
+    float _result;
+    HRESULT _hr = raw_GetVideoFrameRate(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline int IC3D::GetNumberGroups ( ) {
+    int _result;
+    HRESULT _hr = raw_GetNumberGroups(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t IC3D::GetGroupName ( int nIndex ) {
+    BSTR _result;
+    HRESULT _hr = raw_GetGroupName(nIndex, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline int IC3D::GetGroupNumber ( int nIndex ) {
+    int _result;
+    HRESULT _hr = raw_GetGroupNumber(nIndex, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t IC3D::GetGroupDescription ( int nIndex ) {
+    BSTR _result;
+    HRESULT _hr = raw_GetGroupDescription(nIndex, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline int IC3D::GetNumberParameters ( ) {
+    int _result;
+    HRESULT _hr = raw_GetNumberParameters(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t IC3D::GetParameterName ( int nIndex ) {
+    BSTR _result;
+    HRESULT _hr = raw_GetParameterName(nIndex, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline _bstr_t IC3D::GetParameterDescription ( int nIndex ) {
+    BSTR _result;
+    HRESULT _hr = raw_GetParameterDescription(nIndex, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline int IC3D::GetParameterNumber ( int nIndex ) {
+    int _result;
+    HRESULT _hr = raw_GetParameterNumber(nIndex, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline int IC3D::GetParameterType ( int nIndex ) {
+    int _result;
+    HRESULT _hr = raw_GetParameterType(nIndex, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline int IC3D::GetParameterNumberDim ( int nIndex ) {
+    int _result;
+    HRESULT _hr = raw_GetParameterNumberDim(nIndex, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline int IC3D::GetParameterDimension ( int nIndex, int nDim ) {
+    int _result;
+    HRESULT _hr = raw_GetParameterDimension(nIndex, nDim, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline int IC3D::GetParameterLength ( int nIndex ) {
+    int _result;
+    HRESULT _hr = raw_GetParameterLength(nIndex, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _variant_t IC3D::GetParameterValue ( int nIndex, int nItem ) {
+    VARIANT _result;
+    VariantInit(&_result);
+    HRESULT _hr = raw_GetParameterValue(nIndex, nItem, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _variant_t(_result, false);
+}
+
+inline int IC3D::GetParameterIndex ( _bstr_t sGroup, _bstr_t sParam ) {
+    int _result;
+    HRESULT _hr = raw_GetParameterIndex(sGroup, sParam, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _variant_t IC3D::GetAnalogData ( int nChannel, int nFrame, int nSubframe, unsigned char byScaled, float fOffset, float fScale, unsigned char byUseScale ) {
+    VARIANT _result;
+    VariantInit(&_result);
+    HRESULT _hr = raw_GetAnalogData(nChannel, nFrame, nSubframe, byScaled, fOffset, fScale, byUseScale, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _variant_t(_result, false);
+}
+
+inline _variant_t IC3D::GetPointData ( int nChannel, int nCord, int nFrame, unsigned char byScaled ) {
+    VARIANT _result;
+    VariantInit(&_result);
+    HRESULT _hr = raw_GetPointData(nChannel, nCord, nFrame, byScaled, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _variant_t(_result, false);
+}
+
+inline float IC3D::GetPointResidual ( int nChannel, int nFrame ) {
+    float _result;
+    HRESULT _hr = raw_GetPointResidual(nChannel, nFrame, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t IC3D::GetPointMask ( int nChannel, int nFrame ) {
+    BSTR _result;
+    HRESULT _hr = raw_GetPointMask(nChannel, nFrame, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline int IC3D::GetNumberEvents ( ) {
+    int _result;
+    HRESULT _hr = raw_GetNumberEvents(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline float IC3D::GetEventTime ( int nIndex ) {
+    float _result;
+    HRESULT _hr = raw_GetEventTime(nIndex, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline int IC3D::GetFileType ( ) {
+    int _result;
+    HRESULT _hr = raw_GetFileType(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline int IC3D::GetDataType ( ) {
+    int _result;
+    HRESULT _hr = raw_GetDataType(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline int IC3D::GetVideoFrameHeader ( int nStartEnd ) {
+    int _result;
+    HRESULT _hr = raw_GetVideoFrameHeader(nStartEnd, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline int IC3D::GetGroupIndex ( _bstr_t sGroup ) {
+    int _result;
+    HRESULT _hr = raw_GetGroupIndex(sGroup, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline int IC3D::GetLastError ( ) {
+    int _result;
+    HRESULT _hr = raw_GetLastError(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _variant_t IC3D::GetAnalogDataEx ( int nChannel, int nStart, int nEnd, unsigned char byScaled, float fOffset, float fScale, unsigned char byUseScale ) {
+    VARIANT _result;
+    VariantInit(&_result);
+    HRESULT _hr = raw_GetAnalogDataEx(nChannel, nStart, nEnd, byScaled, fOffset, fScale, byUseScale, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _variant_t(_result, false);
+}
+
+inline _variant_t IC3D::GetPointDataEx ( int nChannel, int nCord, int nStart, int nEnd, unsigned char byScaled ) {
+    VARIANT _result;
+    VariantInit(&_result);
+    HRESULT _hr = raw_GetPointDataEx(nChannel, nCord, nStart, nEnd, byScaled, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _variant_t(_result, false);
+}
+
+inline _variant_t IC3D::GetPointResidualEx ( int nChannel, int nStart, int nEnd ) {
+    VARIANT _result;
+    VariantInit(&_result);
+    HRESULT _hr = raw_GetPointResidualEx(nChannel, nStart, nEnd, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _variant_t(_result, false);
+}
+
+inline _variant_t IC3D::GetPointMaskEx ( int nChannel, int nStart, int nEnd ) {
+    VARIANT _result;
+    VariantInit(&_result);
+    HRESULT _hr = raw_GetPointMaskEx(nChannel, nStart, nEnd, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _variant_t(_result, false);
+}
+
+inline int IC3D::SaveFile ( _bstr_t sFilename, int nFiletype ) {
+    int _result;
+    HRESULT _hr = raw_SaveFile(sFilename, nFiletype, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline int IC3D::AddEvent ( _bstr_t sLabel, unsigned char byStatus, float fTime ) {
+    int _result;
+    HRESULT _hr = raw_AddEvent(sLabel, byStatus, fTime, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t IC3D::GetEventLabel ( int nIndex ) {
+    BSTR _result;
+    HRESULT _hr = raw_GetEventLabel(nIndex, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline int IC3D::SetEventLabel ( int nIndex, _bstr_t sLabel ) {
+    int _result;
+    HRESULT _hr = raw_SetEventLabel(nIndex, sLabel, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline int IC3D::SetEventTime ( int nIndex, float fTime ) {
+    int _result;
+    HRESULT _hr = raw_SetEventTime(nIndex, fTime, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline int IC3D::SetEventStatus ( int nIndex, unsigned char byStatus ) {
+    int _result;
+    HRESULT _hr = raw_SetEventStatus(nIndex, byStatus, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline int IC3D::DeleteEvent ( int nIndex ) {
+    int _result;
+    HRESULT _hr = raw_DeleteEvent(nIndex, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline int IC3D::SetGroupName ( int nIndex, _bstr_t sName ) {
+    int _result;
+    HRESULT _hr = raw_SetGroupName(nIndex, sName, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline int IC3D::SetGroupNumber ( int nIndex, int nNumber ) {
+    int _result;
+    HRESULT _hr = raw_SetGroupNumber(nIndex, nNumber, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline int IC3D::SetGroupDescription ( int nIndex, _bstr_t sDesc ) {
+    int _result;
+    HRESULT _hr = raw_SetGroupDescription(nIndex, sDesc, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline int IC3D::SetGroupLock ( int nIndex, unsigned char byLock ) {
+    int _result;
+    HRESULT _hr = raw_SetGroupLock(nIndex, byLock, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline int IC3D::AddGroup ( int nNumber, _bstr_t sName, _bstr_t sDesc, unsigned char byLock ) {
+    int _result;
+    HRESULT _hr = raw_AddGroup(nNumber, sName, sDesc, byLock, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline int IC3D::DeleteGroup ( int nIndex, unsigned char byDeleteParams ) {
+    int _result;
+    HRESULT _hr = raw_DeleteGroup(nIndex, byDeleteParams, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline int IC3D::SetParameterName ( int nIndex, _bstr_t sName ) {
+    int _result;
+    HRESULT _hr = raw_SetParameterName(nIndex, sName, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline int IC3D::SetParameterNumber ( int nIndex, int nNumber ) {
+    int _result;
+    HRESULT _hr = raw_SetParameterNumber(nIndex, nNumber, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline int IC3D::SetParameterLock ( int nIndex, unsigned char byLock ) {
+    int _result;
+    HRESULT _hr = raw_SetParameterLock(nIndex, byLock, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline int IC3D::SetParameterDescription ( int nIndex, _bstr_t sDesc ) {
+    int _result;
+    HRESULT _hr = raw_SetParameterDescription(nIndex, sDesc, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline int IC3D::SetParameterType ( int nIndex, int nType ) {
+    int _result;
+    HRESULT _hr = raw_SetParameterType(nIndex, nType, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline int IC3D::CopyParameter ( int nIndex ) {
+    int _result;
+    HRESULT _hr = raw_CopyParameter(nIndex, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline int IC3D::RetrieveParameter ( int nIndex ) {
+    int _result;
+    HRESULT _hr = raw_RetrieveParameter(nIndex, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline int IC3D::SetParameterValue ( int nIndex, int nItem, const _variant_t & vValue ) {
+    int _result;
+    HRESULT _hr = raw_SetParameterValue(nIndex, nItem, vValue, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline unsigned char IC3D::GetEventStatus ( int nIndex ) {
+    unsigned char _result;
+    HRESULT _hr = raw_GetEventStatus(nIndex, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline int IC3D::AddParameter ( _bstr_t sName, _bstr_t sDesc, _bstr_t sGroup, unsigned char byLock, int nType, int nNumDim, const _variant_t & vDimList, const _variant_t & vData ) {
+    int _result;
+    HRESULT _hr = raw_AddParameter(sName, sDesc, sGroup, byLock, nType, nNumDim, vDimList, vData, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline int IC3D::SetAnalogData ( int nChannel, int nFrame, int nSubframe, const _variant_t & vData ) {
+    int _result;
+    HRESULT _hr = raw_SetAnalogData(nChannel, nFrame, nSubframe, vData, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline int IC3D::DeleteParameter ( int nIndex ) {
+    int _result;
+    HRESULT _hr = raw_DeleteParameter(nIndex, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline int IC3D::SetPointData ( int nChannel, int nCord, int nFrame, const _variant_t & vData ) {
+    int _result;
+    HRESULT _hr = raw_SetPointData(nChannel, nCord, nFrame, vData, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline int IC3D::DeleteAnalogChannel ( int nIndex ) {
+    int _result;
+    HRESULT _hr = raw_DeleteAnalogChannel(nIndex, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline int IC3D::DeleteMarker ( int nIndex ) {
+    int _result;
+    HRESULT _hr = raw_DeleteMarker(nIndex, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline int IC3D::AddAnalogChannel ( ) {
+    int _result;
+    HRESULT _hr = raw_AddAnalogChannel(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline int IC3D::AddMarker ( ) {
+    int _result;
+    HRESULT _hr = raw_AddMarker(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline int IC3D::RemoveParameterData ( int nIndex, int nItem ) {
+    int _result;
+    HRESULT _hr = raw_RemoveParameterData(nIndex, nItem, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline int IC3D::AddFrames ( int nFrames, int nInsertAt ) {
+    int _result;
+    HRESULT _hr = raw_AddFrames(nFrames, nInsertAt, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline int IC3D::DeleteFrames ( int nStartAt, int nNumFrames ) {
+    int _result;
+    HRESULT _hr = raw_DeleteFrames(nStartAt, nNumFrames, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline unsigned char IC3D::GetGroupLock ( int nIndex ) {
+    unsigned char _result;
+    HRESULT _hr = raw_GetGroupLock(nIndex, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline unsigned char IC3D::GetParameterLock ( int nIndex ) {
+    unsigned char _result;
+    HRESULT _hr = raw_GetParameterLock(nIndex, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline int IC3D::GetRegistrationMode ( ) {
+    int _result;
+    HRESULT _hr = raw_GetRegistrationMode(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _bstr_t IC3D::GetRegUserName ( ) {
+    BSTR _result;
+    HRESULT _hr = raw_GetRegUserName(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline _bstr_t IC3D::GetRegUserOrganization ( ) {
+    BSTR _result;
+    HRESULT _hr = raw_GetRegUserOrganization(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline _bstr_t IC3D::GetVersion ( ) {
+    BSTR _result;
+    HRESULT _hr = raw_GetVersion(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline unsigned char IC3D::IsModified ( ) {
+    unsigned char _result;
+    HRESULT _hr = raw_IsModified(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline int IC3D::AddParameterData ( int nIndex, int nItems ) {
+    int _result;
+    HRESULT _hr = raw_AddParameterData(nIndex, nItems, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline int IC3D::NewFile ( _bstr_t sFile, int nFiletype, int nDataType, int nAnalog, int nAVRatio, int nMarkers, float fRate, float fScale, int nFrames ) {
+    int _result;
+    HRESULT _hr = raw_NewFile(sFile, nFiletype, nDataType, nAnalog, nAVRatio, nMarkers, fRate, fScale, nFrames, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline int IC3D::SetMaxInterpolationGap ( int nGap ) {
+    int _result;
+    HRESULT _hr = raw_SetMaxInterpolationGap(nGap, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline int IC3D::SetKey ( _bstr_t sKey ) {
+    int _result;
+    HRESULT _hr = raw_SetKey(sKey, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}
+
+inline _variant_t IC3D::GetForceData ( int nCord, int nFP, int nStart, int nEnd ) {
+    VARIANT _result;
+    VariantInit(&_result);
+    HRESULT _hr = raw_GetForceData(nCord, nFP, nStart, nEnd, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _variant_t(_result, false);
+}
+
+inline _variant_t IC3D::GetMomentData ( int nCord, int nFP, int nStart, int nEnd ) {
+    VARIANT _result;
+    VariantInit(&_result);
+    HRESULT _hr = raw_GetMomentData(nCord, nFP, nStart, nEnd, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _variant_t(_result, false);
+}
+
+inline int IC3D::ZeroAnalogChannel ( int nChannel, int nMethod, int nUseFrames ) {
+    int _result;
+    HRESULT _hr = raw_ZeroAnalogChannel(nChannel, nMethod, nUseFrames, &_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _result;
+}

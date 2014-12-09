@@ -1,0 +1,191 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{E6443C32-0D4F-474A-A55F-19A3AA552E4E}</ProjectGuid>
+    <RootNamespace>Osgviewer</RootNamespace>
+    <Keyword>MFCProj</Keyword>
+    <ProjectName>Osgviewer</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\OpenSceneGraph-3.0.1_debug\include;$(QTDIR)\include;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;..\..\FBX\FBX SDK\2015.1\include</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>..\..\OpenSceneGraph-3.0.1_debug\lib;..\..\FBX\FBX SDK\2015.1\lib\vs2010\x86\debug</AdditionalLibraryDirectories>
+      <AdditionalDependencies>OpenThreadsd.lib;osgd.lib;osgDBd.lib;osgUtild.lib;osgGAd.lib;osgViewerd.lib;osgTextd.lib;osgShadowd.lib;opengl32.lib;$(QTDIR)\lib\qtmaind.lib;$(QTDIR)\lib\QtGuid4.lib;$(QTDIR)\lib\QtCored4.lib;libfbxsdk-md.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalOptions>/FORCE:MULTIPLE %(AdditionalOptions)</AdditionalOptions>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <ValidateAllParameters>true</ValidateAllParameters>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\OpenSceneGraph-3.0.1_release\include;$(QTDIR)\include;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;..\..\FBX\FBX SDK\2015.1\include</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>..\..\OpenSceneGraph-3.0.1_release\lib;..\..\FBX\FBX SDK\2015.1\lib\vs2010\x86\release</AdditionalLibraryDirectories>
+      <AdditionalDependencies>OpenThreads.lib;osg.lib;osgDB.lib;osgUtil.lib;osgGA.lib;osgViewer.lib;osgText.lib;osgShadow.lib;opengl32.lib;$(QTDIR)\lib\qtmain.lib;$(QTDIR)\lib\QtGui4.lib;$(QTDIR)\lib\QtCore4.lib;libfbxsdk-md.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalOptions>/FORCE:MULTIPLE %(AdditionalOptions)</AdditionalOptions>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <ValidateAllParameters>true</ValidateAllParameters>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
+    <None Include="res\Osgviewer.ico" />
+    <None Include="res\Osgviewer.rc2" />
+    <None Include="res\OsgviewerDoc.ico" />
+    <None Include="res\toolbar.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="animation.h" />
+    <ClInclude Include="bvh.h" />
+    <ClInclude Include="bvhnode.h" />
+    <ClInclude Include="c3d.h" />
+    <ClInclude Include="ClassView.h" />
+    <ClInclude Include="CMySplitterWnd.h" />
+    <ClInclude Include="commonData.h" />
+    <ClInclude Include="ConnectDlg.h" />
+    <ClInclude Include="CXTreeCtrl.h" />
+    <ClInclude Include="DeviceBuffer.h" />
+    <ClInclude Include="DynamicLine.h" />
+    <ClInclude Include="ExportDlg.h" />
+    <ClInclude Include="fbx.h" />
+    <ClInclude Include="findNodeVisitor.h" />
+    <ClInclude Include="insLib.h" />
+    <ClInclude Include="ListenThread.h" />
+    <ClInclude Include="MainFrm.h" />
+    <ClInclude Include="math3D.h" />
+    <ClInclude Include="MFC_OSG.h" />
+    <ClInclude Include="OptionDlg.h" />
+    <ClInclude Include="Osgviewer.h" />
+    <ClInclude Include="OsgviewerDoc.h" />
+    <ClInclude Include="OsgviewerView.h" />
+    <ClInclude Include="OutputWnd.h" />
+    <ClInclude Include="playstate.h" />
+    <ClInclude Include="PRONet.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="rotation.h" />
+    <ClInclude Include="settings.h" />
+    <ClInclude Include="skeleton.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="TimePane.h" />
+    <ClInclude Include="ViewTree.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="animation.cpp" />
+    <ClCompile Include="bvh.cpp" />
+    <ClCompile Include="bvhnode.cpp" />
+    <ClCompile Include="c3d.cpp" />
+    <ClCompile Include="ClassView.cpp" />
+    <ClCompile Include="CMySplitterWnd.cpp" />
+    <ClCompile Include="commonData.cpp" />
+    <ClCompile Include="ConnectDlg.cpp" />
+    <ClCompile Include="CXTreeCtrl.cpp" />
+    <ClCompile Include="DynamicLine.cpp" />
+    <ClCompile Include="ExportDlg.cpp" />
+    <ClCompile Include="fbx.cpp" />
+    <ClCompile Include="findNodeVisitor.cpp" />
+    <ClCompile Include="insLib.cpp" />
+    <ClCompile Include="MainFrm.cpp" />
+    <ClCompile Include="math3D.cpp" />
+    <ClCompile Include="MFC_OSG.cpp" />
+    <ClCompile Include="OptionDlg.cpp" />
+    <ClCompile Include="Osgviewer.cpp" />
+    <ClCompile Include="OsgviewerDoc.cpp" />
+    <ClCompile Include="OsgviewerView.cpp" />
+    <ClCompile Include="OutputWnd.cpp" />
+    <ClCompile Include="rotation.cpp" />
+    <ClCompile Include="settings.cpp" />
+    <ClCompile Include="skeleton.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="TimePane.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Osgviewer.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties RESOURCE_FILE="Osgviewer.rc" _x007B_FCB4B50A-E3F1-4174-BD18-54C3B3287258_x007D_="CTchart_line" _x007B_B6C10489-FB89-11D4-93C9-006008A7EED4_x007D_="CTchart_line" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>
