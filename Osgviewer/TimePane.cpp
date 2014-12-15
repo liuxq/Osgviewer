@@ -55,6 +55,8 @@ TimePane::TimePane()
 	m_zoomFont.lfPitchAndFamily	= DEFAULT_PITCH;
 	lstrcpyW(m_zoomFont.lfFaceName,_T("Ariel"));
 
+	m_dValuePrPixel = 0.0f;
+
 	m_font.CreateFontIndirect(&m_zoomFont);
 }
 

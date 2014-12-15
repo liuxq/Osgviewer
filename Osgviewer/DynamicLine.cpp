@@ -20,7 +20,7 @@ BEGIN_MESSAGE_MAP(DynamicLine, CWnd)
 	ON_WM_PAINT()
 END_MESSAGE_MAP()
 
-list<vector<sDataBufferEngine>> framedatas;
+extern list<vector<sDataBufferEngine>> framedatas;
 extern CCriticalSection g_cs;
 
 DynamicLine::DynamicLine()
@@ -284,12 +284,12 @@ void DynamicLine::ComputeRects(BOOL bInitialization)
 	//	{
 	//m_timeaxis.m_dSecondsPrPixel = ((double)(m_timeaxis.m_maxtime.GetTime() - m_timeaxis.m_mintime.GetTime())) / (double)m_plotRect.Width();
 	
-	m_leftaxis.maxrange = 2000.0;
-	m_leftaxis.minrange = 200.0;
-	m_rightaxis.maxrange = 2000.0;
-	m_rightaxis.minrange = 200.0;
-	m_stepaxis.maxrange = 100;
-	m_stepaxis.minrange = 0;
+	m_leftaxis.maxrange = 0.0f;
+	m_leftaxis.minrange = 0.0f;
+	m_rightaxis.maxrange = 0.0f;
+	m_rightaxis.minrange = 0.0f;
+	m_stepaxis.maxrange = 0.0f;
+	m_stepaxis.minrange = 0.0f;
 
 	m_leftaxis.m_dValuePrPixel   = ((double)(m_leftaxis.maxrange- m_leftaxis.minrange) / (double)m_plotRect.Height());
 	m_rightaxis.m_dValuePrPixel   = ((double)(m_rightaxis.maxrange- m_rightaxis.minrange) / (double)m_plotRect.Height());
@@ -540,7 +540,7 @@ void DynamicLine::DrawXAxisGrid(CDC * dc)
 		sprintf(b, "%.0f", xGrid + m_stepaxis.minrange);
 		CSize z = dc->GetTextExtent(CString(b));
 		
-		dc->DrawText(CString(b), CRect(x-z.cx/2, m_plotRect.bottom+4, x+z.cx/2, m_plotRect.bottom+4+m_TextHeight), DT_RIGHT|DT_BOTTOM);
+		dc->DrawText(CString(b), CRect(x-(z.cx+1)/2, m_plotRect.bottom+4, x+(z.cx+1)/2, m_plotRect.bottom+4+m_TextHeight), DT_RIGHT|DT_BOTTOM);
 		xGrid += m_stepaxis.m_dValuePrPixel * 50;
 
 	}

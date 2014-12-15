@@ -182,13 +182,19 @@ void Render(void * b)
 		CMainFrame *pMain = (CMainFrame *)AfxGetApp()->m_pMainWnd;
 		pMain->getClassView().addPerson();
 
-		//增加一个模型
-		cOSG::addSkeleton();
+		//当新增第二个以上连接时增加一个模型
+		if (framedatas.size() > 1)
+		{
+			cOSG::addSkeleton();
+		}
+		
+		g_csForView.Lock();
 		for (int i = 0; i < windowNum_; i++)
 		{
 			cOSG* osg = viewSet[i]->getOSG();
 			osg->ResetSkeleton();
 		}
+		g_csForView.Unlock();
 		//sDataBufferEngine sdb;
 		while(aSocket.Receive((void *)&sending_buffer, sizeof(sending_buffer))) //接收服务器发送回来的内容(该方法会阻塞, 在此等待有内容接收到才继续向下执行)
 		{
@@ -264,6 +270,8 @@ BOOL COsgviewerDoc::OnNewDocument()
 
 	// TODO: add reinitialization code here
 	// (SDI documents will reuse this document)
+
+	cOSG::addSkeleton();//先增加一个模型
 
 	m_csFileName = L"biped.3ds";
 
