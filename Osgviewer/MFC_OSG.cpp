@@ -130,6 +130,12 @@ void cOSG::ResetSkeleton()
 	}
 	
 }
+
+void cOSG::RemoveSkeleton(osg::Node* node)
+{
+	if((shadowedScene->containsNode(node)))
+		shadowedScene->removeChild(node);
+}
 void cOSG::InitCameraConfig(void)
 {
     // Local Variable to hold window size data

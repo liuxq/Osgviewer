@@ -31,19 +31,11 @@
 //#include <fstream>
 //using namespace std;
 
+extern COsgviewerView* viewSet[4];
+
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
-
-extern COsgviewerView* viewSet[4];
-extern int realWindowNum;
-extern int windowNum_;
-
-extern list<vector<sDataBufferEngine>> framedatas;
-extern CCriticalSection g_cs;
-extern CCriticalSection g_csForView;
-//extern COutputWnd* gOutputWnd;
-extern map<QString,int> dataNameMap;
 
 // COsgviewerDoc
 
@@ -56,6 +48,7 @@ BEGIN_MESSAGE_MAP(COsgviewerDoc, CDocument)
 	ON_COMMAND(ID_FILE_EXPORT, &COsgviewerDoc::OnFileExport)
 	ON_COMMAND(ID_FILE_RECORD, &COsgviewerDoc::OnRecord)
 	ON_COMMAND(ID_FILE_STOP, &COsgviewerDoc::OnStop)
+	ON_COMMAND(ID_FILE_SERVERSTART, &COsgviewerDoc::OnServerStart)
 END_MESSAGE_MAP()
 
 
@@ -83,6 +76,8 @@ COsgviewerDoc::COsgviewerDoc()
 	recordStart = -1;
 	recordEnd = -1;
 	curFrameIndex = 0;
+
+	OnServerStart();
 }
 volatile bool isFinish = false;
 COsgviewerDoc::~COsgviewerDoc()
@@ -134,6 +129,11 @@ void COsgviewerDoc::OnStop()
 	g_cs.Unlock();*/
 }
 
+void COsgviewerDoc::OnServerStart()
+{
+	ShellExecute( NULL,L"open", L"NewSkeletonTester.exe",NULL,L"ReleaseFast",SW_SHOWNORMAL);
+}
+
 volatile int connectState = 1;
 void Render(void * b)
 {	
@@ -141,17 +141,23 @@ void Render(void * b)
 
 	/*while(1)
 	{*/
-	CString strIP;
+	CString strIP, strPort;
 	int nPort;
+	CString IpPort;
 	if (connectState == 0)
 	{
-		GetPrivateProfileString(_T("Server"),_T("ServerIP"),NULL,strIP.GetBuffer(40),40,_T(".\\option.ini"));
+		CString tmpIp;
+		GetPrivateProfileString(_T("Server"),_T("ServerIP"),NULL,tmpIp.GetBuffer(40),40,_T(".\\option.ini"));
+		tmpIp.ReleaseBuffer();
  
 		CString portstr;//存储
 		GetPrivateProfileString(_T("Server"),_T("Port"),NULL,portstr.GetBuffer(40),40,_T(".\\option.ini"));
+		portstr.ReleaseBuffer();
 		nPort = _ttoi(portstr);
 
 		connectState = 1;
+		strIP = tmpIp;
+		strPort = portstr;
 	}
 	else
 	{
@@ -160,6 +166,19 @@ void Render(void * b)
 		strIP = optionD.ip;//_T("192.168.1.2");
 		//转换需要连接的端口内容类型
 		nPort = _ttoi(optionD.port);
+		strPort = optionD.port;
+	}
+
+	IpPort = strIP + strPort;
+
+	for (int i = 0; i < mapIndexToIpPort.size(); i++)
+	{
+		if (mapIndexToIpPort[i] == IpPort)
+		{
+			AfxMessageBox(_T("该ip和端口已连接"));
+			_endthread();
+			return;
+		}
 	}
 
 	AfxSocketInit();
@@ -168,9 +187,10 @@ void Render(void * b)
 	if(!aSocket.Create())
 	{
 		AfxMessageBox(_T("error!"));
+		_endthread();
 		return;
 	}
-		
+
 	//连接指定的地址和端口
 	if(aSocket.Connect(strIP, nPort))
 	{
@@ -178,9 +198,10 @@ void Render(void * b)
 		g_cs.Lock();
 		framedatas.resize(framedatas.size()+1);
 		vector<sDataBufferEngine>& framedata = framedatas.back();
+		mapIndexToIpPort.push_back(IpPort);
 		g_cs.Unlock();
 		CMainFrame *pMain = (CMainFrame *)AfxGetApp()->m_pMainWnd;
-		pMain->getClassView().addPerson();
+		pMain->getClassView().ResetPerson();
 
 		//当新增第二个以上连接时增加一个模型
 		if (framedatas.size() > 1)
@@ -204,6 +225,48 @@ void Render(void * b)
 			framedata.push_back(sending_buffer);
 			g_cs.Unlock();
 		}
+
+		//删除数据和模型
+		g_cs.Lock();
+		vector<CString>::iterator mapi = mapIndexToIpPort.begin();
+		vector<Skeleton*>::iterator modeli = cOSG::skeletonArray.begin();
+		vector<osg::Node*>::iterator nodei = cOSG::skeletonGeoArray.begin(); 
+		list<vector<sDataBufferEngine>>::iterator framesi = framedatas.begin();
+
+		osg::Node* removedGeo = NULL;
+		for (;mapi != mapIndexToIpPort.end(); mapi++, modeli++, nodei++, framesi++)
+		{
+			if (*mapi == IpPort)
+			{
+				mapIndexToIpPort.erase(mapi);
+				if (cOSG::skeletonArray.size() > 1)
+				{
+					removedGeo = *nodei;
+					cOSG::skeletonArray.erase(modeli);
+					cOSG::skeletonGeoArray.erase(nodei);
+					
+				}
+				framedatas.erase(framesi);
+				break;
+			}
+		}
+		g_cs.Unlock();
+		g_csForView.Lock();
+		for (int i = 0; i < windowNum_; i++)
+		{
+			cOSG* osg = viewSet[i]->getOSG();
+			if (removedGeo)
+			{
+				removedGeo->setNodeMask(0x0);
+				osg->RemoveSkeleton(removedGeo);
+
+			}
+			
+			osg->ResetSkeleton();
+		}
+		g_csForView.Unlock();
+
+		pMain->getClassView().ResetPerson();
 	}
 	else
 	{
@@ -259,7 +322,10 @@ void Render2(void * b)
 		pMain->getTimePane().calculate();
 		g_csForView.Unlock();
 	}
+	//_CrtDumpMemoryLeaks();
+
 	_endthread();
+
 
 }
 

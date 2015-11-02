@@ -35,6 +35,7 @@ public:
     void InitSceneGraph(void);
 	static void addSkeleton();
 	void ResetSkeleton();
+	void RemoveSkeleton(osg::Node* node);
     void InitCameraConfig(void);
     void SetupWindow(void);
     void SetupCamera(void);

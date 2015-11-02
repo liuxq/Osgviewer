@@ -3,6 +3,9 @@
 
 #include "ViewTree.h"
 #include "CXTreeCtrl.h"
+#include <vector>
+
+using namespace std;
 
 class CClassToolBar : public CMFCToolBar
 {
@@ -22,7 +25,7 @@ public:
 
 	void AdjustLayout();
 	void OnChangeVisualStyle();
-	void addPerson();
+	void ResetPerson();
 
 protected:
 	//CClassToolBar m_wndToolBar;
@@ -39,7 +42,7 @@ protected:
 public:
 	virtual BOOL PreTranslateMessage(MSG* pMsg);
 private:
-	int personSize;
+	vector<HTREEITEM> personSetsChild;
 
 protected:
 	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);

@@ -44,6 +44,7 @@ public:
 	afx_msg void OnFileExport();
 	afx_msg void OnRecord();
 	afx_msg void OnStop();
+	afx_msg void OnServerStart();
 protected:
 	CString m_csFileName;
 

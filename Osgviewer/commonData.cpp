@@ -5,6 +5,7 @@
 
 class COsgviewerView;
 list<vector<sDataBufferEngine>> framedatas;
+vector<CString> mapIndexToIpPort;
 
 COsgviewerView* viewSet[4];
 int realWindowNum;
@@ -15,6 +16,12 @@ CCriticalSection g_cs;
 CCriticalSection g_csForView;
 
 int iWheel = 0;
+
+#ifdef _DEBUG
+ofstream g_debug("debug.txt");
+
+#endif // _DEBUG
+
 
 vector<sDataBufferEngine>* getCurFrame(int i)
 {

@@ -12,13 +12,15 @@
 #include <osgDB/Registry>
 #include <osgDB/ReadFile>
 
+#include "commonData.h"
+
 using namespace std;
 
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction
 //////////////////////////////////////////////////////////////////////
 
-CClassView::CClassView():personSize(0)
+CClassView::CClassView()
 {
 	//m_nCurrSort = ID_SORTING_GROUPBYTYPE;
 }
@@ -72,15 +74,32 @@ void CClassView::OnSize(UINT nType, int cx, int cy)
 	CDockablePane::OnSize(nType, cx, cy);
 	AdjustLayout();
 }
-void CClassView::addPerson()
+void CClassView::ResetPerson()
 {
-	personSize++;
-	CString str;
-	str.Format(L"%d",personSize);
-	/*char ps[100];
-	itoa(personSize,ps, 10);
-	personStr += ps;*/
-	m_wndClassView.InsertItem(str, 1,1,personSets);
+	int frameSize = 0;
+	g_cs.Lock();
+		frameSize = framedatas.size();
+	g_cs.Unlock();
+
+
+	if (m_wndClassView.ItemHasChildren(personSets))
+	{
+		HTREEITEM hChild = m_wndClassView.GetChildItem(personSets);
+		while(hChild)
+		{
+			HTREEITEM deleteChild = hChild;
+			hChild = m_wndClassView.GetNextItem(hChild,TVGN_NEXT); 
+			m_wndClassView.DeleteItem(deleteChild);
+		}
+	}
+
+	for (int i = 0; i < frameSize; i++)
+	{
+		CString str;
+		str.Format(L"%d",i + 1);
+		m_wndClassView.InsertItem(str, personSets);
+	}
+	
 
 	Invalidate(true);
 }

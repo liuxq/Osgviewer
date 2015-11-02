@@ -313,6 +313,7 @@ void DynamicLine::calculate()
 {
 	int XaxisCount = 2000;
 	g_cs.Lock();
+	int a = 0;
 	vector<sDataBufferEngine>* pFrameData = getCurFrame(curFrameIndex);
 	if (!pFrameData)
 	{
